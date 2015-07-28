@@ -320,18 +320,13 @@ function loadAudioBuffer(url) {
   request.responseType = "arraybuffer";
 
   request.onload = function() {
-      audio.decodeAudioData(
-        request.response, function(buffer) {
-          source.buffer = buffer;
-          source.loop = true;
-          source.start(0);
-          view.play();
-        },
-
-      function(buffer) {
-        alert("Error loading MP3");
-      }
-    );
+    audio.decodeAudioData (request.response, function(buffer) {
+      source.buffer = buffer; source.loop = true; source.start(0); view.play();
+    },
+    function(buffer) {
+      alert("Error loading MP3");
+    }
+  );
   };
   request.send();
 }
